@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "5f481f4a-3e8a-4363-a302-70f03157362c",
+		"name": "boot-store-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Hit",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "hit.patel@radixweb.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "Radixweb@1",
+							"type": "default"
+						},
+						{
+							"key": "adminKey",
+							"value": "@dm!n12",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/auth/register/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM1ZTE5ZDY1MGFiNjA5MWY3OTNjYSIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqcGF0ZWxAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzc3MTAzODc5fQ.LKii0Yss4B5mGxRUvk7h8E-mBarWPaGXrC3FyIIs0Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Harsh",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "harshjpatel@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "Harsh@8866",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM2NWZmYzU0MDcyZjg2MzgyODQ0YiIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqLnBhdGVsQHJhZGl4d2ViLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzEwNTAwMn0.tsX8hmC5vq3UOCFjI1HT4rKCI8zA-_wnYo3mYlV5098",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "title",
+						"value": "rich dad and poor dad",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Ramayan",
+							"type": "default"
+						},
+						{
+							"key": "genre",
+							"value": "Hindu",
+							"type": "default"
+						},
+						{
+							"key": "author",
+							"value": "Vedvyas",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "14",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "11",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/books",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM2NWZmYzU0MDcyZjg2MzgyODQ0YiIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqLnBhdGVsQHJhZGl4d2ViLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzEwNTAwMn0.tsX8hmC5vq3UOCFjI1HT4rKCI8zA-_wnYo3mYlV5098",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "stock",
+							"value": "15",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "15",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Rich dad poor dad",
+							"type": "default"
+						},
+						{
+							"key": "genre",
+							"value": "Money",
+							"type": "default"
+						},
+						{
+							"key": "author",
+							"value": "Ghost",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/books/69ec80ea5e368cdeff7f1e52",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"69ec80ea5e368cdeff7f1e52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM2NWZmYzU0MDcyZjg2MzgyODQ0YiIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqLnBhdGVsQHJhZGl4d2ViLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzEwNTAwMn0.tsX8hmC5vq3UOCFjI1HT4rKCI8zA-_wnYo3mYlV5098",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/books/69ec80ea5e368cdeff7f1e52",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"69ec80ea5e368cdeff7f1e52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM2NWZmYzU0MDcyZjg2MzgyODQ0YiIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqLnBhdGVsQHJhZGl4d2ViLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzEwNTAwMn0.tsX8hmC5vq3UOCFjI1HT4rKCI8zA-_wnYo3mYlV5098",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/books/69ec80ea5e368cdeff7f1e52/images/69ec96389342c9b0d18a4825",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"69ec80ea5e368cdeff7f1e52",
+						"images",
+						"69ec96389342c9b0d18a4825"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM2NWZmYzU0MDcyZjg2MzgyODQ0YiIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqLnBhdGVsQHJhZGl4d2ViLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzEwNTAwMn0.tsX8hmC5vq3UOCFjI1HT4rKCI8zA-_wnYo3mYlV5098",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bookImage",
+							"type": "file",
+							"src": [
+								"/home/harshj.patel/Documents/exam-images/butterfly-nebula.png",
+								"/home/harshj.patel/Documents/exam-images/bird-water.jpg",
+								"/home/harshj.patel/Documents/exam-images/76_k5MzGi5.jpeg"
+							]
+						},
+						{
+							"key": "displayorder",
+							"value": "2",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/books/69ec9988ec43b818c0694629/images",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"69ec9988ec43b818c0694629",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/books?page=1&limit=2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order place",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWM1ZTE5ZDY1MGFiNjA5MWY3OTNjYSIsIm5hbWUiOiJIYXJzaCIsImVtYWlsIjoiaGFyc2hqcGF0ZWxAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzc3MTE5NDEyfQ.0qSEQNPT3Nq0joN2UXNh8fwE0Ee_hELd3WPjubfzDI4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/order",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

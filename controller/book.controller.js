@@ -10,15 +10,36 @@ const allowedImage = ["image/png", "image/jpeg", "image/webp"];
 const maxImageSize = 2;
 
 async function getBooks(req, res) {
-    let page = parseInt(req.query.page || 1);
-    let limit = Math.min(req.query.limit || 20, 100);
-    let skip = 0;
-    if (page > 1) {
-        skip = (page - 1) * limit;
-    } 
-    const books = await Book.find({isdeleted : false}).skip(skip).limit(limit);
+  let page = parseInt(req.query.page || 1);
+  let limit = Math.min(req.query.limit || 20, 100);
+  let skip = 0;
+  if (page > 1) {
+    skip = (page - 1) * limit;
+  }
+  const books = await Book.find({ isdeleted: false }).skip(skip).limit(limit);
+  if (books.length > 0) {
+    const fullUrl = `${req.protocol}://${req.get("host")}`;
+    books.forEach(async (element) => {
+      let bookData = {
+        title: element.title,
+        author: element.author,
+        genre: element.genre,
+        price: element.price,
+        stock: element.stockquantity,
+        images: [],
+      };
 
-    return sendResponse(res, 201, {data : books, meta: {page, limit}});
+      let BookImages = await BookImage.find({ refBookId: element._id }).select(
+        "fileName",
+      );
+      BookImages.forEach((imageDetails) => {
+        bookData.images.push(
+          `${fullUrl}/public/bookimages/${imageDetails.fileName}`,
+        );
+      });
+    })
+  }
+  return sendResponse(res, 200, { data: books, meta: { page, limit } });
 }
 
 async function createBook(req, res) {
@@ -165,7 +186,7 @@ async function addImages(req, res) {
     });
   }
   if (imageList.length > 0) {
-    let destination = path.resolve("images/bookimages");
+    let destination = path.resolve("public/bookimages");
     imageList.forEach(async (element) => {
       let addList = {};
       await fs.copyFileSync(
@@ -195,7 +216,16 @@ async function deleteImage(req, res) {
     return sendResponse(res, 404, { message: "Book image not exists" });
   }
   await BookImage.findByIdAndDelete(bookImage._id);
-  await fs.unlinkSync(path.resolve("images/bookimages") + '/' + bookImage.fileName);
+  await fs.unlinkSync(
+    path.resolve("public/bookimages") + "/" + bookImage.fileName,
+  );
   return sendResponse(res, 200, { message: "Image deleted successfully" });
 }
-module.exports = { createBook, updateBook, deleteBook, addImages, deleteImage, getBooks };
+module.exports = {
+  createBook,
+  updateBook,
+  deleteBook,
+  addImages,
+  deleteImage,
+  getBooks,
+};

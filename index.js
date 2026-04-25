@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const app = require('./app.js');
 require('dotenv' ).config();
-console.clear();
 
 // Database connection and server start logic
 mongoose.connect(process.env.DBURL).then(() => {
