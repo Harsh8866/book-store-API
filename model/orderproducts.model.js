@@ -33,5 +33,5 @@ const orderProductsModel = new mongoose.Schema({
   },
 });
 
-const OrderProducts = mongoose.model("Order", orderProductsModel);
+const OrderProducts = mongoose.model("OrderProducts", orderProductsModel);
 module.exports = OrderProducts;

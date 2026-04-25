@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const orderProductsModel = new mongoose.Schema({
+const orderAddressModel = new mongoose.Schema({
   refOrderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Order",
@@ -38,7 +38,7 @@ const orderProductsModel = new mongoose.Schema({
     required: [true, "Postcode is required"],
   },
   country: {
-    type: Number,
+    type: String,
     required: [true, "Country name is required"],
   },
   addressType: {
@@ -48,5 +48,5 @@ const orderProductsModel = new mongoose.Schema({
   },
 });
 
-const OrderProducts = mongoose.model("Order", orderProductsModel);
-module.exports = OrderProducts;
+const OrderAddress = mongoose.model("OrderAddress", orderAddressModel);
+module.exports = OrderAddress;
